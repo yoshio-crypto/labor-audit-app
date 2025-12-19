@@ -35,6 +35,11 @@ function navigateTo(screenName) {
 
 // --- Main Render Function ---
 function render() {
+    if (!app) {
+        console.error('#app コンテナが見つかりません');
+        return;
+    }
+
     app.innerHTML = '';
     window.scrollTo(0, 0);
 
@@ -191,9 +196,11 @@ function bindContactEvents() {
             };
 
             console.log('Sending Data (Dummy):', submitData);
-            alert(`【送信完了（デモ）】\n\n${submitData.companyInfo.companyName} 様\nお問い合わせありがとうございます。\n\n詳細内容はコンソールログに出力されています。`);
+            alert(
+                `【送信完了（デモ）】\n\n${submitData.companyInfo.companyName} 様\nお問い合わせありがとうございます。\n\n詳細内容はコンソールログに出力されています。`
+            );
 
-            // トップへ戻る、あるいは完了画面へ
+            // トップへ戻る
             state.answers = {};
             state.result = null;
             state.companyInfo = {};
